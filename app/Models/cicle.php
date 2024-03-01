@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class cicle extends Model
 {
     use HasFactory;
+
     protected $table = 'cicles';
     protected $primaryKey = 'id';
     public $incrementing = true;
     public $timestamps = false;
 
-    
+    public function cursos(){
+        return $this->hasMany(curs::class,'cicles_id');
+    }
 }
