@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CicleController;
 use App\Http\Controllers\SaluduController;
 
 /*
@@ -17,4 +18,7 @@ use App\Http\Controllers\SaluduController;
 Route::get('/', function () {
     return view('index');
 });
+
+
+Route::resource('cicle', CicleController::class);
 
