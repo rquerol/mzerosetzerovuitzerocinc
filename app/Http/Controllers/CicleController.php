@@ -14,9 +14,12 @@ class CicleController extends Controller
     {
         $actiu = $request->input('actiuBuscar');
         if($actiu=='actiu'){
-            $cicles = Cicle::where('actiu','=',true)->get();
+     //       $cicles = Cicle::where('actiu','=',true)->get();
+            $cicles = Cicle::where('actiu','=',true)->paginate(4)->withQueryString();
+
         }else{
-            $cicles = Cicle::all();
+            //$cicles = Cicle::all();
+            $cicles = Cicle::paginate(4)->withQueryString();
         }
 
         $request->session()->flashInput($request->input());

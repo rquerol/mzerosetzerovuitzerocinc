@@ -62,4 +62,5 @@
 
     </tbody>
   </table>
+  {{ $cicles->links() }}
 @endsection
