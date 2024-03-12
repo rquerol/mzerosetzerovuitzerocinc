@@ -1,7 +1,7 @@
 @extends("layouts.principal")
 
 @section("titul")
- " T_Index";
+ " T_Index"
 @endsection
 
 @section("content")

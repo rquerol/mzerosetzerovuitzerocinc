@@ -14,9 +14,12 @@ class CicleController extends Controller
     {
         $actiu = $request->input('actiuBuscar');
         if($actiu=='actiu'){
-            $cicles = Cicle::where('actiu','=',true)->get();
+     //       $cicles = Cicle::where('actiu','=',true)->get();
+            $cicles = Cicle::where('actiu','=',true)->paginate(4)->withQueryString();
+
         }else{
-            $cicles = Cicle::all();
+            //$cicles = Cicle::all();
+            $cicles = Cicle::paginate(4)->withQueryString();
         }
 
         $request->session()->flashInput($request->input());
@@ -29,7 +32,7 @@ class CicleController extends Controller
      */
     public function create()
     {
-        //
+        return View('cicles.cicle');
     }
 
     /**
@@ -37,7 +40,17 @@ class CicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cicle=new cicle();
+
+        $cicle->sigles=$request->input('sigles');
+        $cicle->nom=$request->input('nom');
+        $cicle->descripcio=$request->input('descripcio');
+        $cicle->actiu=($request->input('actiu')=='actiu');
+
+        // $cicle->actiu=0;
+        $cicle->save();
+
+        return redirect()->action([CicleController::class, 'edit']);
     }
 
     /**
@@ -53,7 +66,7 @@ class CicleController extends Controller
      */
     public function edit(cicle $cicle)
     {
-        //
+        return View('cicles.edit', compact('cicle'));
     }
 
     /**
@@ -67,8 +80,12 @@ class CicleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(cicle $cicle)
+    public function destroy(Request $request, cicle $cicle)
     {
-        //
+        $cicle->delete();
+
+        return redirect()->action([CicleController::class, 'index']);
+
+        // return View('cicles.index');
     }
 }

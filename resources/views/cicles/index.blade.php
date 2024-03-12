@@ -57,9 +57,23 @@
 
             @endif
         </td>
+        <td>
+            <form action="{{ action([App\Http\Controllers\CicleController::class, 'destroy'] , ['cicle'=> $cicle->id])}}" method="POST" class="float-right ml-1">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-danger"><i class="fa-trash fa" aria-hidden="true">Esborrar</i></button>
+            </form>
+            <form method="GET" action="{{ action([App\Http\Controllers\CicleController::class, 'edit'] , ['cicle'=>$cicle->id])}}" class="float-right">
+                @csrf
+                {{-- @method('PUT') --}}
+                <button type="submit" class="btn btn-sm btn-secondary"><i class="fa-edit fa" aria-hidden="true">Editar</i></button>
+            </form>
+        </td>
       </tr>
     @endforeach
 
     </tbody>
   </table>
+  <a href="{{ url('cicle/create') }}" class="btn btn-float-afegir btn-primary"><i class="fa-plus-circle fa">Crea nou cicle</i></a>
+  {{ $cicles->links() }}
 @endsection
