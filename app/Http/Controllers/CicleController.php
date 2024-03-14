@@ -50,7 +50,7 @@ class CicleController extends Controller
         // $cicle->actiu=0;
         $cicle->save();
 
-        return redirect()->action([CicleController::class, 'edit']);
+        return redirect()->action([CicleController::class, 'index']);
     }
 
     /**
@@ -74,7 +74,14 @@ class CicleController extends Controller
      */
     public function update(Request $request, cicle $cicle)
     {
-        //
+        $cicle->sigles=$request->input('sigles');
+        $cicle->nom=$request->input('nom');
+        $cicle->descripcio=$request->input('descripcio');
+        $cicle->actiu=($request->input('actiu')=='actiu');
+
+        $cicle->save();
+
+        return redirect()->action([CicleController::class, 'index'],compact('request'));
     }
 
     /**
@@ -83,9 +90,6 @@ class CicleController extends Controller
     public function destroy(Request $request, cicle $cicle)
     {
         $cicle->delete();
-
         return redirect()->action([CicleController::class, 'index']);
-
-        // return View('cicles.index');
     }
 }

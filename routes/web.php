@@ -20,5 +20,24 @@ Route::get('/', function () {
 });
 
 
-Route::resource('cicle', CicleController::class);
+// Route::resource('cicle', CicleController::class);
 
+Route::get('cicle', [App\Http\Controllers\CicleController::class, 'index']);
+
+Route::post('cicle', [App\Http\Controllers\CicleController::class, 'store']);
+
+Route::get('cicle/create', [App\Http\Controllers\CicleController::class, 'create']);
+
+Route::get('cicle/{cicle}', [App\Http\Controllers\CicleController::class, 'show']);
+
+Route::put('cicle/{cicle}', [App\Http\Controllers\CicleController::class, 'update']);
+
+Route::delete('cicle/{cicle}', [App\Http\Controllers\CicleController::class, 'destroy']);
+
+Route::get('cicle/{cicle}/edit', [App\Http\Controllers\CicleController::class, 'edit']);
+
+Route::post('login', [App\Http\Controllers\UsuariController::class, 'login'])->name('login');
+
+Route::middleware(['auth', 'second'])->group(function () {
+
+});
