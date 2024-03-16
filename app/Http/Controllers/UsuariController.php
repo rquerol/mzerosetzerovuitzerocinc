@@ -15,10 +15,34 @@ class UsuariController extends Controller
         //
     }
 
-    public function login(Request $request){
-        return Redirect('/');
+    public function login(){
+        // $usuari=new Usuari();
+        // $usuari->actiu=true;
+        // $usuari->contrasenya=\bcrypt('123');
+        // $usuari->correu="rquerol@politecnics.barcelona";
+        // $usuari->nom="Rebeca";
+        // $usuari->cognoms="Querol i Xifré";
+        // $usuari->rols_id=1;
+
+        // $usuari->save();
+
+        return View('login');
     }
 
+    public function auth(Request $request){
+        $username = $request->input('username');
+        $contraseña = $request->input('contraseña');
+
+        $user = Usuario::where('username',$username)->first();
+        if($user!=null && Hash::check($contraseña, $user->contraseña)){
+            Auth::login($user);
+            $response = Route::redirect('cicle');
+
+        }else{
+
+        }
+        return View('login');
+    }
     /**
      * Show the form for creating a new resource.
      */

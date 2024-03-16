@@ -19,6 +19,13 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('login', [App\Http\Controllers\UsuariController::class, 'login'])->name('login');
+
+Route::post('login', [App\Http\Controllers\UsuariController::class, 'auth']);
+
+Route::post('salud', [App\Http\Controllers\SaluduController::class, 'init']);
+
+
 
 // Route::resource('cicle', CicleController::class);
 
@@ -36,8 +43,9 @@ Route::delete('cicle/{cicle}', [App\Http\Controllers\CicleController::class, 'de
 
 Route::get('cicle/{cicle}/edit', [App\Http\Controllers\CicleController::class, 'edit']);
 
-Route::post('login', [App\Http\Controllers\UsuariController::class, 'login'])->name('login');
-
 Route::middleware(['auth', 'second'])->group(function () {
-
+    Route::get('/cicle', function () {
+        $user = Auth::user();
+        return view('home', compact('user'));
+    });
 });

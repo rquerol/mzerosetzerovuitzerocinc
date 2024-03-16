@@ -5,7 +5,8 @@
 @endsection
 
 @section("content")
-<form action="{{ action([App\Http\Controllers\UsuariController::class, 'login']) }}" method="post">
+<form action="{{ action([App\Http\Controllers\SaluduController::class, 'init']) }}" method="post">
+    @csrf
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nom</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nom">

@@ -1,9 +1,9 @@
 @extends("layouts.principal")
 
-@section("titul") {
- " T_Form";
-}
+@section("titul")
+ "saludu"
+@endsection
 
-@section("content") {
+@section("content")
 
-}
+@endsection
