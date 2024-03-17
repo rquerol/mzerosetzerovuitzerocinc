@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 
 use App\Models\Usuari;
 use Illuminate\Http\Request;
+
+
+
 
 class UsuariController extends Controller
 {
@@ -29,19 +33,22 @@ class UsuariController extends Controller
         return View('login');
     }
 
-    public function auth(Request $request){
-        $username = $request->input('username');
-        $contraseña = $request->input('contraseña');
+    public function authent(Request $request){
+        $useremail = $request->input('useremail');
+        $contraseña = $request->input('contrasenya');
 
-        $user = Usuario::where('username',$username)->first();
-        if($user!=null && Hash::check($contraseña, $user->contraseña)){
-            Auth::login($user);
-            $response = Route::redirect('cicle');
+        $user = Usuari::where('correu',$useremail)->get();
+        // $user = Usuari::where('correu',$useremail)->first();
+
+        if($user!=null )//&& Hash::check($contraseña, $user->contraseña))
+        {
+            //Auth::login($user);
+            $response = redirect('cicle');
 
         }else{
-
+            $response = redirect('/');
         }
-        return View('login');
+        return $response;
     }
     /**
      * Show the form for creating a new resource.

@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('login', [App\Http\Controllers\UsuariController::class, 'login'])->name('login');
 
-Route::post('login', [App\Http\Controllers\UsuariController::class, 'auth']);
+Route::post('login', [App\Http\Controllers\UsuariController::class, 'authent']);
 
 Route::post('salud', [App\Http\Controllers\SaluduController::class, 'init']);
 
