@@ -37,8 +37,12 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('login') }}" tabindex="-1" >Login</a>
-          </li>
+            @if(Auth::check())
+                <a class="nav-link" href="{{ url('/logout') }}" tabindex="-1" >Logout</a>
+            @else
+                <a class="nav-link" href="{{ url('/login') }}" tabindex="-1" >Login</a>
+            @endif
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -48,6 +52,9 @@
     </div>
   </div>
 
+  @if(Auth::check() && Auth::user()->rol->nom=="Administrador")
+  "Admin"
+  @endif
 </nav>
 <div class="container">
   @yield("content")

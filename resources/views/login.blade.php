@@ -5,7 +5,7 @@
 @endsection
 
 @section("content")
-<form action="{{ action([App\Http\Controllers\UsuariController::class, 'authent']) }}" method="post" class="row g-3">
+<form action="{{ action([App\Http\Controllers\UsuariController::class, 'login']) }}" method="post" class="row g-3">
     @csrf
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label" required>Email</label>

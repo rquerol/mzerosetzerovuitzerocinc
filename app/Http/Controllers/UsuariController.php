@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 use Auth;
-
+use Hash;
 use App\Models\Usuari;
 use Illuminate\Http\Request;
-
-
-
 
 class UsuariController extends Controller
 {
@@ -19,37 +16,42 @@ class UsuariController extends Controller
         //
     }
 
-    public function login(){
+    public function showlogin(){
         // $usuari=new Usuari();
         // $usuari->actiu=true;
         // $usuari->contrasenya=\bcrypt('123');
-        // $usuari->correu="rquerol@politecnics.barcelona";
-        // $usuari->nom="Rebeca";
-        // $usuari->cognoms="Querol i Xifré";
+        // $usuari->correu="clara@politecnics.barcelona";
+        // $usuari->nom="Clara";
+        // $usuari->cognoms="Ris Querol";
         // $usuari->rols_id=1;
-
-        // $usuari->save();
+        // $usuari->save();x
 
         return View('login');
     }
 
-    public function authent(Request $request){
+    public function login(Request $request){
         $useremail = $request->input('useremail');
         $contraseña = $request->input('contrasenya');
 
-        $user = Usuari::where('correu',$useremail)->get();
-        // $user = Usuari::where('correu',$useremail)->first();
+        $user = Usuari::where('correu',$useremail)->first();
 
-        if($user!=null )//&& Hash::check($contraseña, $user->contraseña))
+        if($user!=null && Hash::check($contraseña, $user->contrasenya))
         {
-            //Auth::login($user);
-            $response = redirect('cicle');
+            Auth::login($user);
+            $response= view('saludu', compact('user'));
 
         }else{
-            $response = redirect('/');
+            $response = redirect('cicle');
         }
         return $response;
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

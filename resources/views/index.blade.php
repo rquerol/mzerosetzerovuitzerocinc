@@ -12,7 +12,7 @@
         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nom">
     </div>
     <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Password</label>
+        <label for="exampleFormControlTextarea1" class="form-label">Cognom</label>
         <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="cognom">
     </div>
     <input type="submit" name="saludu">Envia</input>
