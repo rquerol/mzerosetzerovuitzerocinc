@@ -53,7 +53,7 @@
   </div>
 
   @if(Auth::check() && Auth::user()->rol->nom=="Administrador")
-  "Admin"
+
   @endif
 </nav>
 <div class="container">

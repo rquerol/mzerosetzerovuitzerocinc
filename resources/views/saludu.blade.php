@@ -5,5 +5,13 @@
 @endsection
 
 @section("content")
-{{ $user->nom . " " .$user->cognoms ." " . $user->rol->nom }}
+    @if (isset($user->nom))
+        {{ $user->nom }}
+    @endif
+    @if (isset($user->cognoms))
+        {{ $user->cognoms }}
+    @endif
+    @if (isset($user->rol->nom))
+        {{ $user->rol->nom }}
+    @endif
 @endsection
