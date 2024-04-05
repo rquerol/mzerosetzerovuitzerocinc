@@ -45,6 +45,9 @@ class CicleController extends Controller
     public function edit(cicle $cicle)
     {
         //
+        $cicle->nom="ht";
+        $cicle->save();
+
     }
 
     /**

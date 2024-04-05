@@ -8,8 +8,6 @@ class SaluduController extends Controller
 {
     public function init(Request $request){
 
-
         return view('saludu');
     }
-
 }

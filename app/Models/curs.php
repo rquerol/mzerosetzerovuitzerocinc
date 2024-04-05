@@ -13,5 +13,8 @@ class curs extends Model
     public $incrementing = true;
     public $timestamps = false;
 
-    
+    public function cicle(){
+        return $this->belongsTo(cicle::class,'cicles_id');
+    }
+
 }
