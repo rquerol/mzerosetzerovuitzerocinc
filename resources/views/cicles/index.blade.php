@@ -74,6 +74,8 @@
 
     </tbody>
   </table>
-  <a href="{{ url('cicle/create') }}" class="btn btn-float-afegir btn-primary"><i class="fa-plus-circle fa">Crea nou cicle</i></a>
+
+  <div id="cicle" class="container-fluid"></div>
+  <a href="{{ url('cicle/create') }}" class="btn btn-float-afegir btn-primary"><i class="fa-plus-circle fa">Crea nou cicle </i><i class="bi bi-plus-circle"></i></a>
   {{ $cicles->links() }}
 @endsection
