@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 Route::resource('cicle', CicleController::class);
 
+
