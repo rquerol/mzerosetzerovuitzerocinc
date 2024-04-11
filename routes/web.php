@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CicleController;
+use App\Http\Controllers\SaluduController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::post('/saludu', function () {
-    return view('saludu');
-});
+
+Route::resource('cicle', CicleController::class);
+

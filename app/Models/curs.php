@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class curs extends Model
 {
     use HasFactory;
-    protected $table = 'cursos';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
+    protected $table = 'cursos'; //protected $table = 'my_flights';
+   // protected $primaryKey = 'id';
+    //public $incrementing = true;
     public $timestamps = false;
 
     public function cicle(){
