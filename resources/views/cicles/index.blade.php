@@ -21,7 +21,7 @@
 
                 </div>
                 <div class="col-1">
-                    <button class="btn btn-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true">Search</i></button>
                 </div>
             </div>
         </form>
@@ -74,6 +74,8 @@
 
     </tbody>
   </table>
-  <a href="{{ url('cicle/create') }}" class="btn btn-float-afegir btn-primary"><i class="fa-plus-circle fa">Crea nou cicle</i></a>
+
+  <div id="cicle" class="container-fluid"></div>
+  <a href="{{ url('cicle/create') }}" class="btn btn-float-afegir btn-primary"><i class="fa-plus-circle fa">Crea nou cicle </i><i class="bi bi-plus-circle"></i></a>
   {{ $cicles->links() }}
 @endsection
