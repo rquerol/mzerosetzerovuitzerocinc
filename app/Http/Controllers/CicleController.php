@@ -47,10 +47,15 @@ class CicleController extends Controller
         $cicle->descripcio=$request->input('descripcio');
         $cicle->actiu=($request->input('actiu')=='actiu');
 
-        // $cicle->actiu=0;
-        $cicle->save();
+        try{
+            $cicle->save();
+            $response= redirect()->action([CicleController::class, 'index']);
+        }
+        catch(QueryException $ex){
+            $mensage = Utilitat::errorMessage($ex);
+        }
 
-        return redirect()->action([CicleController::class, 'edit']);
+        return $response;
     }
 
     /**
@@ -78,7 +83,17 @@ class CicleController extends Controller
      */
     public function update(Request $request, cicle $cicle)
     {
-        //
+        try{
+            $cicle->sigles=$request->input('sigles');
+            $cicle->nom=$request->input('nom');
+            $cicle->descripcio=$request->input('descripcio');
+            $cicle->actiu=($request->input('actiu')=='actiu');
+
+            $cicle->save();
+        }catch(QueryException $ex){
+
+        }
+        return redirect()->action([CicleController::class, 'index'],compact('request'));
     }
 
     /**
@@ -86,10 +101,16 @@ class CicleController extends Controller
      */
     public function destroy(Request $request, cicle $cicle)
     {
-        $cicle->delete();
+        try{
+            $cicle->delete();
+            $request->session()->flash('mensaje','Registre esborrat correctament');
 
+        }catch(QueryException $ex)
+        {
+            $mensaje = Utilitats::errorMessage($ex);
+            $request->session()->flash('error', $mensaje);
+        }
         return redirect()->action([CicleController::class, 'index']);
 
-        // return View('cicles.index');
     }
 }
