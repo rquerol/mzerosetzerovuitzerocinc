@@ -26,6 +26,7 @@ Route::post('/salud', [App\Http\Controllers\SaluduController::class, 'init']);
 
 Route::resource('/cicle', CicleController::class);
 
+
 // Route::get('cicle', [App\Http\Controllers\CicleController::class, 'index']);
 // Route::post('cicle', [App\Http\Controllers\CicleController::class, 'store']);
 // Route::get('cicle/create', [App\Http\Controllers\CicleController::class, 'create']);
@@ -40,3 +41,5 @@ Route::middleware(['auth'])->group(function () {
         return view('saludu', compact('user'));
     });
 });
+
+

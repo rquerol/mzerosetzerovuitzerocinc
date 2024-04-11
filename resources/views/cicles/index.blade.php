@@ -4,7 +4,7 @@
 <div class="card">
     <div class="car-body">
         <h5 class="card-title">Buscar</h5>
-        <form action="{{ action([App\Http\Controllers\CicleController::class, 'index'])}}">
+        <form action="{{ action([App\Http\Controllers\CicleController::class, 'index'])}}" method="post">
             <div class="form-row">
                 <div class="col-1">
                     @if (old('actiuBuscar')=='actiu')
